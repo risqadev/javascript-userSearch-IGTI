@@ -1,9 +1,14 @@
 let allUsers = [];
 let filteredUsers = [];
 
+const searchForm = document.querySelector('form');
+const searchInput = searchForm.querySelector('#search-input');
+const searchButton = searchForm.querySelector('#search-button');
+
 async function start() {
   await fetchUsers();
   handleFormSubmit();
+  searchInput.focus();
 }
 start();
 
@@ -32,10 +37,6 @@ async function fetchUsers() {
 }
 
 const handleFormSubmit = () => {
-  const searchForm = document.querySelector('form');
-  const searchInput = searchForm.querySelector('#search-input');
-  const searchButton = searchForm.querySelector('#search-button');
-
   const search = () => {
     const searchValue = searchInput.value.toLowerCase().trim();
     // searchInput.value = '';
@@ -127,5 +128,6 @@ const handleFormSubmit = () => {
 
     search();
     render();
+    searchInput.focus();
   });
 };
