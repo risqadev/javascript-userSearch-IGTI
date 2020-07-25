@@ -10,33 +10,40 @@
     <title>Mód. 1 - Desafio</title>
   </head>
   <body>
-    <div class="">
-      <h1 class="center">Pesquisa de Usuários</h1>
-      <form class="">
-        <input
-          id="search-input"
-          type="text"
-          placeholder="Busca"
-          class=""
-          disabled
-        />
-        <input
-          id="search-button"
-          class="waves-effect waves-light btn"
-          type="submit"
-          value="Buscar"
-          disabled
-        />
-      </form>
+    <div class="container">
+      <div class="row">
+        <h1 class="col s12 center">Pesquisa de Usuários</h1>
 
-      <div class="users-container">
-        <div id="tab-users" class="tab-column">
-          <h2 id="count-users">Nenhum usuário filtrado</h2>
-          <div id="user-list"></div>
+        <form class="col s12">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Busca"
+            class="col s9 m10 l10"
+            disabled
+          />
+          <input
+            id="search-button"
+            class="col s3 m2 l2 waves-effect waves-light btn"
+            type="submit"
+            value="Buscar"
+            disabled
+          />
+        </form>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <div id="tab-users" class="tab-column">
+            <h2 id="count-users">Nenhum usuário filtrado</h2>
+            <div id="user-list"></div>
+          </div>
         </div>
-        <div id="tab-statistics" class="tab-column">
-          <h2 id="statistics-header">Nada a ser exibido</h2>
-          <div id="statistics-data"></div>
+        <div class="col s6">
+          <div id="tab-statistics" class="tab-column">
+            <h2 id="statistics-header">Nada a ser exibido</h2>
+            <div id="statistics-data"></div>
+          </div>
         </div>
       </div>
     </div>
