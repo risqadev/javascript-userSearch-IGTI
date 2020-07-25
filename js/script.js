@@ -27,7 +27,7 @@ async function fetchUsers() {
         dob: { age },
         gender,
       }) => ({
-        name: first + ' ' + last,
+        name: `${first} ${last}`,
         gender,
         age,
         photo,
@@ -39,7 +39,6 @@ async function fetchUsers() {
 const handleFormSubmit = () => {
   const search = () => {
     const searchValue = searchInput.value.toLowerCase().trim();
-    // searchInput.value = '';
 
     filteredUsers = allUsers.filter(({ name }) =>
       name.toLowerCase().trim().includes(searchValue)
