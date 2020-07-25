@@ -3,34 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mód. 1 - Desafio</title>
-    <!-- Compiled and minified CSS -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    /> -->
+
     <link rel="stylesheet" href="./css/materialize.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
+
+    <title>Mód. 1 - Desafio</title>
   </head>
   <body>
     <div class="container">
       <h1 class="center">Pesquisa de Usuários</h1>
       <form class="row">
-        <input type="text" placeholder="Busca" class="col s10 m10 l10" />
-        <button type="submit" class="col s2 m2 l2">Buscar</button>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Busca"
+          class="col s10 m10 l10"
+          disabled
+        />
+        <input id="search-button" type="submit" value="Buscar" disabled />
       </form>
 
       <div class="row">
         <div id="tab-users" class="col s6 m6 l6">
-          <span>Nenhum usuário filtrado</span>
-          <div id="results"></div>
+          <h2 id="count-users">Nenhum usuário filtrado</h2>
+          <div id="user-list"></div>
         </div>
         <div id="tab-statistics" class="col s6 m6 l6">
-          <span>Nada a ser exibido</span>
+          <h2 id="statistics-header">Nada a ser exibido</h2>
+          <div id="statistics-data"></div>
         </div>
       </div>
     </div>
 
-    <script src="./js/script.js"></script>
+    <script defer src="./js/script.js"></script>
   </body>
 </html>
