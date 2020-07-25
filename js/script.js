@@ -23,14 +23,17 @@ async function fetchUsers() {
     .map(
       ({
         name: { first, last },
-        picture: { thumbnail: photo },
+        picture: { thumbnail },
         dob: { age },
         gender,
       }) => ({
         name: `${first} ${last}`,
         gender,
         age,
-        photo,
+        photo: thumbnail.replace(
+          'https://randomuser.me/api/portraits/thumb/',
+          './img/'
+        ),
       })
     )
     .sort((a, b) => a.name.localeCompare(b.name));
