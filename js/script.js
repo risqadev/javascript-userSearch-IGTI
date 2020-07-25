@@ -48,21 +48,15 @@ const handleFormSubmit = () => {
   let searchValue = null;
 
   searchInput.removeAttribute('disabled');
-  searchButton.removeAttribute('disabled');
-  // searchInput.addEventListener('keyup', (event) => {
-  //   let hasText = !!event.target.value && event.target.value.trim() !== '';
+  searchInput.addEventListener('keyup', (event) => {
+    let hasText = !!event.target.value && event.target.value.trim() !== '';
 
-  //   if (hasText) {
-  //     searchButton.removeAttribute('disabled');
-  //   } else {
-  //     searchButton.setAttribute('disabled', '');
-  //   }
-  // });
-
-  // const captureSearchValue = () => {
-  //   searchValue = searchInput.value.toLowerCase().trim();
-  //   searchInput.value = '';
-  // };
+    if (hasText) {
+      searchButton.removeAttribute('disabled');
+    } else {
+      searchButton.setAttribute('disabled', '');
+    }
+  });
 
   const search = () => {
     searchValue = searchInput.value.toLowerCase().trim();
@@ -84,17 +78,30 @@ const handleFormSubmit = () => {
 };
 
 const render = () => {
-  const renderUserList = () => {
-    const qtUsers = filteredUsers.length;
+  let countUsers = filteredUsers.length;
+  let countMasc = 0;
+  let countFem = 0;
+  let ageSum = 0;
+  let ageAvg = 0;
 
+  const renderUserList = () => {
     let tabUsersContent = `
-    <h2> ${qtUsers} usuário(s) encontrado(s)</h2>
+    <h3> ${countUsers} usuário(s) encontrado(s)</h3>
     <div>
     `;
 
-    filteredUsers.forEach(({ name, photo, age }) => {
+    filteredUsers.forEach(({ name, photo, age, gender }) => {
+      if (gender === 'male') {
+        countMasc += 1;
+      }
+      if (gender === 'female') {
+        countFem += 1;
+      }
+
+      ageSum += age;
+
       const userHTML = `
-        <div>
+        <div class="user">
           <img src="${photo}" alt="Foto de ${name}" />
           <span>${name}, ${age} anos</span>
         </div>
@@ -103,19 +110,32 @@ const render = () => {
       tabUsersContent += userHTML;
     });
 
+    ageAvg = ageSum / countUsers;
+
     tabUsersContent += '</div>';
     tabUsers.innerHTML = tabUsersContent;
   };
 
   const renderStatistics = () => {
     let tabStatisticsContent = `
-      <h2>Estatísticas</h2>
-      <div>`;
+      <h3>Estatísticas</h3>
+      <ul>
+        <li>Sexo masculino: <strong>${formatNumber(countMasc)}</strong></li>
+        <li>Sexo feminino: <strong>${formatNumber(countFem)}</strong></li>
+        <li>Soma das idades: <strong>${formatNumber(ageSum)}</strong></li>
+        <li>Média das idades: <strong>${formatNumber(ageAvg)}</strong></li>
+      </ul>
+    `;
 
-    tabStatisticsContent += '</div>';
     tabStatistics.innerHTML = tabStatisticsContent;
   };
 
   renderUserList();
   renderStatistics();
+};
+
+const formatNumber = (number) => {
+  return Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(
+    number
+  );
 };

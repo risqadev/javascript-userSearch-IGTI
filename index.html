@@ -10,25 +10,31 @@
     <title>Mód. 1 - Desafio</title>
   </head>
   <body>
-    <div class="container">
+    <div class="">
       <h1 class="center">Pesquisa de Usuários</h1>
-      <form class="row">
+      <form class="">
         <input
           id="search-input"
           type="text"
           placeholder="Busca"
-          class="col s10 m10 l10"
+          class=""
           disabled
         />
-        <input id="search-button" type="submit" value="Buscar" disabled />
+        <input
+          id="search-button"
+          class="waves-effect waves-light btn"
+          type="submit"
+          value="Buscar"
+          disabled
+        />
       </form>
 
-      <div class="row">
-        <div id="tab-users" class="col s6 m6 l6">
+      <div class="users-container">
+        <div id="tab-users" class="tab-column">
           <h2 id="count-users">Nenhum usuário filtrado</h2>
           <div id="user-list"></div>
         </div>
-        <div id="tab-statistics" class="col s6 m6 l6">
+        <div id="tab-statistics" class="tab-column">
           <h2 id="statistics-header">Nada a ser exibido</h2>
           <div id="statistics-data"></div>
         </div>
