@@ -26,3 +26,12 @@ h2 {
   border-radius: 50%;
   margin: 10px 10px 10px 0;
 }
+
+.gh-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.gh-link img {
+  margin-right: 10px;
+}
