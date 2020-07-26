@@ -13,10 +13,10 @@ async function start() {
 start();
 
 async function fetchUsers() {
+  // Data copied only once to avoid many requests to the original API. The local file will be used.
   /* const res = await fetch(
     'https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo'
-    ); */
-  // Data copied only once to avoid many requests to the original API. The local file will be used.
+  ); */
   const res = await fetch('./js/apiUsers.json');
   const json = await res.json();
   allUsers = json.results
